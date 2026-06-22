@@ -1,0 +1,139 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/bootstrap.min.css}"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/common.min.css}"
+            rel="stylesheet"
+    />
+    <title>PDFQuizMate</title>
+</head>
+<body class="vw-100 vh-100">
+<!-- navigation -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">PDFQuizMate</a>
+    </div>
+</nav>
+
+<main class="container text-center">
+    <form th:action method="post" enctype="multipart/form-data">
+        <div class="mt-4">
+            <span class="fs-5 fw-bolder">문제 생성</span> <br />
+            <span class="fw-light">PDF 내용을 기반으로 문제를 생성합니다.</span>
+        </div>
+
+        <!-- 문제 유형 -->
+        <div class="mt-4">
+            <span class="fw-bold">문제 유형</span>
+            <div class="d-flex justify-content-center gap-4 mt-3 ms-0">
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionType"
+                        id="multiple"
+                        value="MULTIPLE"
+                        checked
+                />
+                <label class="btn btn-outline-primary" for="multiple">
+                    4지선다
+                </label>
+
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionType"
+                        id="short"
+                        value="SHORT"
+                />
+                <label class="btn btn-outline-primary" for="short"> 단답형 </label>
+
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionType"
+                        id="ox"
+                        value="OX"
+                />
+                <label class="btn btn-outline-primary" for="ox"> OX 퀴즈 </label>
+            </div>
+        </div>
+
+        <!-- 문제 수 -->
+        <div class="mt-4">
+            <span class="fw-bold">문제 수</span>
+            <div class="d-flex justify-content-center gap-4 mt-3 ms-0">
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionCount"
+                        id="count5"
+                        value="5"
+                        checked
+                />
+                <label class="btn btn-outline-primary" for="count5"> 5문제 </label>
+
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionCount"
+                        id="count10"
+                        value="10"
+                />
+                <label class="btn btn-outline-primary" for="count10">
+                    10문제
+                </label>
+
+                <input
+                        type="radio"
+                        class="btn-check"
+                        name="questionCount"
+                        id="count20"
+                        value="20"
+                />
+                <label class="btn btn-outline-primary" for="count20">
+                    20문제
+                </label>
+            </div>
+        </div>
+
+        <!-- 파일 업로드 -->
+        <div class="mt-5">
+            <span class="fw-bold">PDF 파일 업로드</span> <br />
+            <span class="fw-light small"
+            >10MB 이내 PDF 파일 하나만 업로드 해주세요.</span
+            >
+            <div class="row justify-content-center gap-4 mt-3 ms-0">
+                <input
+                        type="file"
+                        class="form-control w-50 mx-auto"
+                        id="inputFile"
+                        name="file"
+                        accept=".pdf"
+                        required
+                />
+            </div>
+        </div>
+
+        <!-- 문제 생성 버튼 -->
+        <div class="my-4">
+            <button
+                    type="submit"
+                    class="btn btn-primary px-3 py-2"
+            >
+                문제 생성하기
+            </button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
