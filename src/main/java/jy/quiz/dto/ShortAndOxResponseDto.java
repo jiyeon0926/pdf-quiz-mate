@@ -12,8 +12,8 @@ public class ShortAndOxResponseDto extends QuizCommonResponseDto {
 
     private final List<ShortAndOxQuestionDto> questions;
 
-    public ShortAndOxResponseDto(String id, QuestionType questionType, QuestionCount questionCount, QuizStatus status, List<ShortAndOxQuestionDto> questions) {
-        super(id, questionType, questionCount, status);
+    public ShortAndOxResponseDto(QuestionType questionType, QuestionCount questionCount, QuizStatus status, List<ShortAndOxQuestionDto> questions) {
+        super(questionType, questionCount, status);
         this.questions = questions;
     }
 }

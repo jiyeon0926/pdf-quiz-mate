@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public abstract class QuizCommonResponseDto {
 
-    private final String id;
     private final QuestionType questionType;
     private final QuestionCount questionCount;
     private final QuizStatus status;

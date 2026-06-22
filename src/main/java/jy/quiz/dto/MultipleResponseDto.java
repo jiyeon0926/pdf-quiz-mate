@@ -12,8 +12,8 @@ public class MultipleResponseDto extends QuizCommonResponseDto {
 
     private final List<MultipleQuestionDto> questions;
 
-    public MultipleResponseDto(String id, QuestionType questionType, QuestionCount questionCount, QuizStatus status, List<MultipleQuestionDto> questions) {
-        super(id, questionType, questionCount, status);
+    public MultipleResponseDto(QuestionType questionType, QuestionCount questionCount, QuizStatus status, List<MultipleQuestionDto> questions) {
+        super(questionType, questionCount, status);
         this.questions = questions;
     }
 }
