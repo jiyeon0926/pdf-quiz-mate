@@ -4,15 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * 문서 처리 관련 커스텀 예외
+ * 서버 오류 관련 커스텀 예외
  */
-public class DocumentProcessingException extends ResponseStatusException {
+public class ServerCustomException extends ResponseStatusException {
 
-    public DocumentProcessingException(String message) {
+    public ServerCustomException(String message) {
         this(message, null);
     }
 
-    public DocumentProcessingException(String message, Throwable cause) {
+    public ServerCustomException(String message, Throwable cause) {
         super(HttpStatus.INTERNAL_SERVER_ERROR, message, cause);
     }
 }
