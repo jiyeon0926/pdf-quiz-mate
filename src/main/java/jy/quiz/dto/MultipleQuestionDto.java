@@ -1,17 +1,18 @@
 package jy.quiz.dto;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MultipleQuestionDto {
 
-    private final int questionNumber;
-    private final String question;
-    private final List<MultipleChoiceDto> choices;
-    private final MultipleAnswerDto answer;
-    private final String explanation;
+    private int questionNumber;
+    private String question;
+    private List<MultipleChoiceDto> choices;
+    private MultipleAnswerDto answer;
+    private String explanation;
 }

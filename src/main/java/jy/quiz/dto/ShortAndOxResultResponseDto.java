@@ -2,14 +2,17 @@ package jy.quiz.dto;
 
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ShortAndOxResultResponseDto extends QuizCommonResultResponseDto {
 
-    private final List<ShortAndOxQuestionDto> questions;
+    private List<ShortAndOxQuestionDto> questions;
 
     public ShortAndOxResultResponseDto(QuestionType questionType, int questionCount, QuizStatus status, List<ShortAndOxQuestionDto> questions) {
         super(questionType, questionCount, status);

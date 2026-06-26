@@ -1,14 +1,15 @@
 package jy.quiz.dto;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ShortAndOxQuestionDto {
 
-    private final int questionNumber;
-    private final String question;
-    private final String answer;
-    private final String explanation;
+    private int questionNumber;
+    private String question;
+    private String answer;
+    private String explanation;
 }

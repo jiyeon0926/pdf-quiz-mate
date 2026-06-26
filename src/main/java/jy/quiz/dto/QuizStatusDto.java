@@ -1,14 +1,19 @@
 package jy.quiz.dto;
 
 import jy.quiz.enums.QuizStatus;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class QuizStatusDto {
 
-    private final QuizStatus status;
+    private QuizStatus status;
+
+    public QuizStatusDto(QuizStatus status) {
+        this.status = status;
+    }
 
     public static QuizStatusDto of(QuizStatus status) {
         return new QuizStatusDto(status);

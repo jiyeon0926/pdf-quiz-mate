@@ -1,12 +1,13 @@
 package jy.quiz.dto;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MultipleAnswerDto {
 
-    private final int number;
-    private final String choice;
+    private int number;
+    private String choice;
 }
