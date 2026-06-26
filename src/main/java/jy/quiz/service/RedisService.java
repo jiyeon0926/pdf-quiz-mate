@@ -1,7 +1,7 @@
 package jy.quiz.service;
 
 import jy.quiz.dto.QuizCommonResultResponseDto;
-import jy.quiz.enums.QuizStatus;
+import jy.quiz.dto.QuizStatusDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ public class RedisService {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
-    public void saveStatus(UUID uuid, QuizStatus status) {
+    public void saveStatus(UUID uuid, QuizStatusDto statusDto) {
         redisTemplate.opsForValue().set(
                 QUIZ_KEY_PREFIX + uuid.toString(),
-                status,
+                statusDto,
                 Duration.ofHours(1)
         );
     }

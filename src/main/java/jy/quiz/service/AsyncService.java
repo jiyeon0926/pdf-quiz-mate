@@ -36,7 +36,7 @@ public class AsyncService {
             redisService.saveResult(uuid, resultResponseDto);
         } catch (Exception e) {
             log.error("문제 생성 실패: {}", uuid);
-            redisService.saveStatus(uuid, QuizStatus.FAILED);
+            redisService.saveStatus(uuid, QuizStatusDto.of(QuizStatus.FAILED));
         }
     }
 

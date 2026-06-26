@@ -1,5 +1,6 @@
 package jy.quiz.service;
 
+import jy.quiz.dto.QuizStatusDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class QuizService {
 
     public UUID generateQuiz(QuestionType type, int count, MultipartFile file) {
         UUID uuid = UUID.randomUUID();
-        redisService.saveStatus(uuid, QuizStatus.PROCESSING);
+        redisService.saveStatus(uuid, QuizStatusDto.of(QuizStatus.PROCESSING));
         asyncService.generateQuiz(uuid, type, count, file);
 
         return uuid;
