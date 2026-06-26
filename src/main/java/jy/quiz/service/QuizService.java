@@ -23,4 +23,8 @@ public class QuizService {
 
         return uuid;
     }
+
+    public QuizStatusDto getStatus(UUID uuid) {
+        return redisService.getStatus(uuid);
+    }
 }
