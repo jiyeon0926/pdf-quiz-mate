@@ -16,14 +16,14 @@ import java.util.UUID;
 @Slf4j
 public class AsyncService {
 
-    private final DocumentProcessingService documentProcessingService;
+    private final PdfService pdfService;
     private final AiService aiService;
     private final RedisService redisService;
 
     @Async
     public void generateQuiz(UUID uuid, QuestionType type, int count, MultipartFile file) {
         try {
-            String text = documentProcessingService.extractTextFromPdf(file);
+            String text = pdfService.extractTextFromPdf(file);
             QuizCommonAiResponseDto aiResponseDto = aiService.generateQuiz(
                     type,
                     count,

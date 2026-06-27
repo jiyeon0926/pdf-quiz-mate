@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @Service
 @Slf4j
-public class DocumentProcessingService {
+public class PdfService {
 
     /**
      * PDF 파일로부터 텍스트 추출
