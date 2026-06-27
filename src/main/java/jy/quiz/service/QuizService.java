@@ -42,4 +42,8 @@ public class QuizService {
 
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "퀴즈를 찾을 수 없습니다.");
     }
+
+    public QuizCommonResultResponseDto getResult(UUID uuid) {
+        return redisService.getResult(uuid);
+    }
 }

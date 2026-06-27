@@ -1,5 +1,6 @@
 package jy.quiz.controller;
 
+import jy.quiz.dto.QuizCommonResultResponseDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.service.QuizService;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +41,13 @@ public class QuizController {
         model.addAttribute("uuid", uuid);
 
         return "loading";
+    }
+
+    @GetMapping("/{uuid}")
+    public String showResult(@PathVariable UUID uuid, Model model) {
+        QuizCommonResultResponseDto result = quizService.getResult(uuid);
+        model.addAttribute("result", result);
+
+        return "result";
     }
 }
