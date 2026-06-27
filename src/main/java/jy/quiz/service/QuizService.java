@@ -1,11 +1,14 @@
 package jy.quiz.service;
 
+import jy.quiz.dto.QuizCommonResultResponseDto;
 import jy.quiz.dto.QuizStatusDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -25,6 +28,18 @@ public class QuizService {
     }
 
     public QuizStatusDto getStatus(UUID uuid) {
-        return redisService.getStatus(uuid);
+        QuizStatusDto status = redisService.getStatus(uuid);
+        if (status != null) {
+            return status;
+        }
+
+        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+        if (result != null) {
+            QuizStatus resultStatus = result.getStatus();
+
+            return QuizStatusDto.of(resultStatus);
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "퀴즈를 찾을 수 없습니다.");
     }
 }

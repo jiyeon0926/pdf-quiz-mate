@@ -47,4 +47,10 @@ public class RedisService {
 
         return quizStatusTemplate.opsForValue().get(key);
     }
+
+    public QuizCommonResultResponseDto getResult(UUID uuid) {
+        String key = QUIZ_RESULT_KEY_PREFIX + uuid.toString();
+
+        return quizResultTemplate.opsForValue().get(key);
+    }
 }
