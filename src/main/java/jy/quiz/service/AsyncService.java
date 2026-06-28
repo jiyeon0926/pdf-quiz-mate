@@ -3,6 +3,7 @@ package jy.quiz.service;
 import jy.quiz.dto.*;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
+import jy.quiz.service.pdf.PdfService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;

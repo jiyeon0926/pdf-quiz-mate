@@ -4,11 +4,14 @@ import jy.quiz.dto.QuizCommonResultResponseDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.service.QuizService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Controller
@@ -46,8 +49,19 @@ public class QuizController {
     @GetMapping("/{uuid}")
     public String showResult(@PathVariable UUID uuid, Model model) {
         QuizCommonResultResponseDto result = quizService.getResult(uuid);
+        model.addAttribute("uuid", uuid);
         model.addAttribute("result", result);
 
         return "result";
+    }
+
+    @GetMapping("/{uuid}/download/question")
+    public ResponseEntity<byte[]> downloadQuestion(@PathVariable UUID uuid) throws IOException {
+        byte[] questions = quizService.downloadQuestion(uuid);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=question.pdf")
+                .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
+                .body(questions);
     }
 }

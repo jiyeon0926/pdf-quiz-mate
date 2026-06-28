@@ -4,12 +4,14 @@ import jy.quiz.dto.QuizCommonResultResponseDto;
 import jy.quiz.dto.QuizStatusDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
+import jy.quiz.service.pdf.PdfService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Service
@@ -18,6 +20,7 @@ public class QuizService {
 
     private final RedisService redisService;
     private final AsyncService asyncService;
+    private final PdfService pdfService;
 
     public UUID generateQuiz(QuestionType type, int count, MultipartFile file) {
         UUID uuid = UUID.randomUUID();
@@ -45,5 +48,11 @@ public class QuizService {
 
     public QuizCommonResultResponseDto getResult(UUID uuid) {
         return redisService.getResult(uuid);
+    }
+
+    public byte[] downloadQuestion(UUID uuid) throws IOException {
+        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+
+        return pdfService.generateQuestionPdf(result);
     }
 }
