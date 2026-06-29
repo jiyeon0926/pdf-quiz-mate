@@ -18,7 +18,7 @@ public class MultipleExplanationPdfWriter implements PdfWriter<MultipleResultRes
             String choiceLabel = getChoiceLabel(answer.getNumber());
 
             context.write(11, q.getQuestionNumber() + ". " + choiceLabel + " " + answer.getChoice());
-            context.write(11, "해설 " + q.getExplanation());
+            context.write(11, q.getExplanation());
 
             context.newLine(20);
         }

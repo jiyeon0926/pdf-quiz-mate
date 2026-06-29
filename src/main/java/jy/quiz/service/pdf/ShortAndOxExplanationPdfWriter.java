@@ -13,7 +13,7 @@ public class ShortAndOxExplanationPdfWriter implements PdfWriter<ShortAndOxResul
     public void write(ShortAndOxResultResponseDto result, PdfContext context) throws IOException {
         for (ShortAndOxQuestionDto q : result.getQuestions()) {
             context.write(11, q.getQuestionNumber() + ". " + q.getAnswer());
-            context.write(11, "해설 " + q.getExplanation());
+            context.write(11, q.getExplanation());
 
             context.newLine(20);
         }
