@@ -4,6 +4,7 @@ import jy.quiz.dto.QuizCommonResultResponseDto;
 import jy.quiz.dto.QuizStatusDto;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
+import jy.quiz.exception.NotFoundException;
 import jy.quiz.service.pdf.PdfService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,14 +48,24 @@ public class QuizService {
     }
 
     public QuizCommonResultResponseDto getResult(UUID uuid) {
-        return redisService.getResult(uuid);
+        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+
+        if (result == null) {
+            throw new NotFoundException("결과가 만료되었거나 존재하지 않습니다.");
+
+        }
+        return result;
     }
 
     public byte[] downloadQuestion(UUID uuid) throws IOException {
-        return pdfService.generateQuestionPdf(getResult(uuid));
+        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+
+        return pdfService.generateQuestionPdf(result);
     }
 
     public byte[] downloadExplanation(UUID uuid) throws IOException {
-        return pdfService.generateExplanationPdf(getResult(uuid));
+        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+
+        return pdfService.generateExplanationPdf(result);
     }
 }

@@ -84,4 +84,9 @@ public class QuizController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(explanationByte);
     }
+
+    @GetMapping("/error")
+    public String errorPage() {
+        return "error";
+    }
 }
