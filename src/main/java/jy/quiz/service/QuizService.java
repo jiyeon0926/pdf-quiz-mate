@@ -51,8 +51,10 @@ public class QuizService {
     }
 
     public byte[] downloadQuestion(UUID uuid) throws IOException {
-        QuizCommonResultResponseDto result = redisService.getResult(uuid);
+        return pdfService.generateQuestionPdf(getResult(uuid));
+    }
 
-        return pdfService.generateQuestionPdf(result);
+    public byte[] downloadExplanation(UUID uuid) throws IOException {
+        return pdfService.generateExplanationPdf(getResult(uuid));
     }
 }

@@ -54,7 +54,7 @@
                 <p class="card-text small">
                     생성된 문제의 해설을 PDF 파일로 다운로드할 수 있습니다.
                 </p>
-                <a href="#" class="btn btn-primary"
+                <a th:href="@{/quiz/{uuid}/download/explanation(uuid=${uuid})}" class="btn btn-primary"
                 ><i class="bi bi-download"></i> 해설 다운로드</a
                 >
             </div>
@@ -71,7 +71,7 @@
                          th:text="${{'MULTIPLE':'4지선다형','SHORT':'단답형','OX':'OX 퀴즈'}[result.questionType.name()]}">
                     </div>
                     <div class="ms-3 mt-4" th:each="q : ${result.questions}">
-                        <span class="fw-bold" th:text="|${q.questionNumber}. ${q.question}|"></span>
+                        <span th:text="|${q.questionNumber}. ${q.question}|"></span>
                         <div th:if="${result.questionType.name() == 'MULTIPLE'}">
                             <div class="mt-2" th:each="c : ${q.choices}">
                                 <span th:text="|${{'①','②','③','④'}[c.number - 1]} ${c.choice}|"></span>

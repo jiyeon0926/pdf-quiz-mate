@@ -26,6 +26,8 @@ public class PdfService {
 
     private final MultipleQuestionPdfWriter multipleQuestionPdfWriter;
     private final ShortAndOxQuestionPdfWriter shortAndOxQuestionPdfWriter;
+    private final MultipleExplanationPdfWriter multipleExplanationPdfWriter;
+    private final ShortAndOxExplanationPdfWriter shortAndOxExplanationPdfWriter;
 
     /**
      * PDF 파일로부터 텍스트 추출
@@ -64,6 +66,29 @@ public class PdfService {
         switch (result.getQuestionType()) {
             case MULTIPLE -> multipleQuestionPdfWriter.write((MultipleResultResponseDto) result, context);
             case SHORT, OX -> shortAndOxQuestionPdfWriter.write((ShortAndOxResultResponseDto) result, context);
+        }
+
+        context.close();
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        document.save(byteArrayOutputStream);
+        document.close();
+
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    public byte[] generateExplanationPdf(QuizCommonResultResponseDto result) throws IOException {
+        PDDocument document = new PDDocument();
+        PDPage page = new PDPage(PDRectangle.A4);
+        document.addPage(page);
+        PDType0Font font = font("fonts/NanumGothic.ttf", document);
+
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        PdfContext context = PdfContext.create(document, contentStream, font);
+
+        switch (result.getQuestionType()) {
+            case MULTIPLE -> multipleExplanationPdfWriter.write((MultipleResultResponseDto) result, context);
+            case SHORT, OX -> shortAndOxExplanationPdfWriter.write((ShortAndOxResultResponseDto) result, context);
         }
 
         context.close();

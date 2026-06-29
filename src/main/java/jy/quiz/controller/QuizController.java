@@ -57,11 +57,21 @@ public class QuizController {
 
     @GetMapping("/{uuid}/download/question")
     public ResponseEntity<byte[]> downloadQuestion(@PathVariable UUID uuid) throws IOException {
-        byte[] questions = quizService.downloadQuestion(uuid);
+        byte[] questionByte = quizService.downloadQuestion(uuid);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=question.pdf")
                 .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
-                .body(questions);
+                .body(questionByte);
+    }
+
+    @GetMapping("/{uuid}/download/explanation")
+    public ResponseEntity<byte[]> downloadExplanation(@PathVariable UUID uuid) throws IOException {
+        byte[] explanationByte = quizService.downloadExplanation(uuid);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=explanation.pdf")
+                .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
+                .body(explanationByte);
     }
 }
