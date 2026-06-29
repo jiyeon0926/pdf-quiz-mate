@@ -56,6 +56,7 @@ public class AiService {
                 응답 형식을 지켜주세요.
                 
                 [문제 유형이 4지선다인 응답 형식]
+                choice 값마다 텍스트 앞에 번호 붙이지마세요.
                 {
                 	"questions": [
                 		{
