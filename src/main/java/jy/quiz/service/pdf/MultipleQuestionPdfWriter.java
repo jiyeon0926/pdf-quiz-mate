@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class MultiplePdfWriter implements PdfWriter<MultipleResultResponseDto> {
+public class MultipleQuestionPdfWriter implements PdfWriter<MultipleResultResponseDto> {
 
     @Override
     public void write(MultipleResultResponseDto result, PdfContext context) throws IOException {

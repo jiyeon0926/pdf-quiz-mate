@@ -24,8 +24,8 @@ import java.io.IOException;
 @Slf4j
 public class PdfService {
 
-    private final MultiplePdfWriter multiplePdfWriter;
-    private final ShortAndOxPdfWriter shortAndOxPdfWriter;
+    private final MultipleQuestionPdfWriter multipleQuestionPdfWriter;
+    private final ShortAndOxQuestionPdfWriter shortAndOxQuestionPdfWriter;
 
     /**
      * PDF 파일로부터 텍스트 추출
@@ -62,8 +62,8 @@ public class PdfService {
         PdfContext context = PdfContext.create(document, contentStream, font);
 
         switch (result.getQuestionType()) {
-            case MULTIPLE -> multiplePdfWriter.write((MultipleResultResponseDto) result, context);
-            case SHORT, OX -> shortAndOxPdfWriter.write((ShortAndOxResultResponseDto) result, context);
+            case MULTIPLE -> multipleQuestionPdfWriter.write((MultipleResultResponseDto) result, context);
+            case SHORT, OX -> shortAndOxQuestionPdfWriter.write((ShortAndOxResultResponseDto) result, context);
         }
 
         context.close();

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class ShortAndOxPdfWriter implements PdfWriter<ShortAndOxResultResponseDto> {
+public class ShortAndOxQuestionPdfWriter implements PdfWriter<ShortAndOxResultResponseDto> {
 
     @Override
     public void write(ShortAndOxResultResponseDto result, PdfContext context) throws IOException {
