@@ -59,14 +59,14 @@ public class PdfService {
         PDType0Font font = font("fonts/NanumGothic.ttf", document);
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        PdfContext context = PdfContext.create(document, contentStream, font, 40, 800);
+        PdfContext context = PdfContext.create(document, contentStream, font);
 
         switch (result.getQuestionType()) {
             case MULTIPLE -> multiplePdfWriter.write((MultipleResultResponseDto) result, context);
             case SHORT, OX -> shortAndOxPdfWriter.write((ShortAndOxResultResponseDto) result, context);
         }
 
-        contentStream.close();
+        context.close();
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         document.save(byteArrayOutputStream);

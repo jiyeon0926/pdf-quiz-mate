@@ -15,11 +15,9 @@ public class MultiplePdfWriter implements PdfWriter<MultipleResultResponseDto> {
     public void write(MultipleResultResponseDto result, PdfContext context) throws IOException {
         for (MultipleQuestionDto q : result.getQuestions()) {
             context.write(11, q.getQuestionNumber() + ". " + q.getQuestion());
-            context.newLine(20);
 
             for (MultipleChoiceDto c : q.getChoices()) {
                 context.write(11, getChoiceLabel(c.getNumber()) + " " + c.getChoice());
-                context.newLine(18);
             }
 
             context.newLine(20);

@@ -60,7 +60,7 @@ public class QuizController {
         byte[] questions = quizService.downloadQuestion(uuid);
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=question.pdf")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=question.pdf")
                 .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
                 .body(questions);
     }
