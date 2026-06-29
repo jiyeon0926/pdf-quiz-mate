@@ -50,7 +50,7 @@
       if (data.status === "COMPLETED") {
         clearInterval(interval);
         location.href = `/quiz/${uuid}`;
-      } else if (data.status === "FAIL") {
+      } else if (data.status === "FAILED") {
         alert("문제 생성을 실패하였습니다.");
         clearInterval(interval);
         location.href = "/quiz"
