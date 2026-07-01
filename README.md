@@ -16,6 +16,12 @@ PDFQuizMate는 AI를 활용해 다양한 유형의 문제를 생성하고 PDF로
 ## 주요 기능
 - Gemini 2.5 Flash를 활용한 4지선다, 단답형, OX 유형의 맞춤형 문제 생성
 - 문제 및 해설 PDF 다운로드
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/641f45bd-0f07-4409-860b-3ea0d5100fed" />
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/046d7bac-5987-4220-aa2a-0459aa71ac36" />
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/b49b4b97-0adf-46d3-9b8a-c4ff501830ad" />
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/823f1133-4eeb-4b1b-9a7f-0b922455c7fe" />
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/a8963cf3-e4f6-4b51-a952-f4df7886737f" />
+<img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/f17fd4d6-5fd4-4138-a54a-b0440e2bc347" />
 
 ## 기술 스택
 ## 🛠 Tech Stack
