@@ -3,6 +3,7 @@ package jy.quiz.service;
 import jy.quiz.dto.*;
 import jy.quiz.enums.QuestionType;
 import jy.quiz.enums.QuizStatus;
+import jy.quiz.exception.ServerCustomException;
 import jy.quiz.service.pdf.PdfService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,7 @@ public class AsyncService {
         } catch (Exception e) {
             log.error("문제 생성 실패: {}", uuid);
             redisService.saveStatus(uuid, QuizStatusDto.of(QuizStatus.FAILED));
+            throw new ServerCustomException("문제 생성 실패: " + e.getMessage(), e);
         }
     }
 

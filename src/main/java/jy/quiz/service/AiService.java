@@ -33,7 +33,7 @@ public class AiService {
                         .entity(ShortAndOxAiResponseDto.class);
             };
         } catch (Exception e) {
-            log.error("문제 생성 중 오류 발생");
+            log.error("문제 생성 중 오류 발생: {}", e);
             throw new ServerCustomException("문제 생성 중 오류 발생: " + e.getMessage(), e);
         }
     }
