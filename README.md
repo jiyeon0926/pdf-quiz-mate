@@ -47,6 +47,7 @@ PDFQuizMate는 사용자가 업로드한 PDF에서 텍스트를 추출하고, AI
 
 ## 프로젝트 구조
 ```
+C:.
 ├─main
 │  ├─java
 │  │  └─jy
@@ -116,8 +117,14 @@ PDFQuizMate는 사용자가 업로드한 PDF에서 텍스트를 추출하고, AI
 │              result.html
 │
 └─test
-    └─java
-        └─jy
-            └─quiz
-                    QuizApplicationTests.java
+    ├─java
+    │  └─jy
+    │      └─quiz
+    │          │  QuizApplicationTests.java
+    │          │
+    │          └─service
+    │                  AsyncServiceTest.java
+    │
+    └─resources
+            sample.pdf
 ```
