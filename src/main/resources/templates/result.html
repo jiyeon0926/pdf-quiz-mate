@@ -1,0 +1,87 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/bootstrap.min.css}"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/common.css}"
+            rel="stylesheet"
+    />
+    <title>PDFQuizMate</title>
+</head>
+<body class="vw-100 vh-100">
+<!-- navigation -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/quiz">PDFQuizMate</a>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="mt-4 mb-5 text-center">
+        <span class="fs-5 fw-bolder">문제 생성 완료</span> <br />
+        <span class="fw-light">AI가 문제를 생성하였습니다.</span>
+    </div>
+
+    <!-- 문제 및 해설 다운로드 -->
+    <div class="d-flex justify-content-center gap-4 mt-3 text-center">
+        <div class="card" style="width: 25rem">
+            <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text small">
+                    생성된 문제를 PDF 파일로 다운로드할 수 있습니다.
+                </p>
+                <a th:href="@{/quiz/{uuid}/download/question(uuid=${uuid})}" class="btn btn-primary"
+                ><i class="bi bi-download"></i> 문제 다운로드</a
+                >
+            </div>
+        </div>
+        <div class="card" style="width: 25rem">
+            <div class="card-body">
+                <h5 class="card-title">해설</h5>
+                <p class="card-text small">
+                    생성된 문제의 해설을 PDF 파일로 다운로드할 수 있습니다.
+                </p>
+                <a th:href="@{/quiz/{uuid}/download/explanation(uuid=${uuid})}" class="btn btn-primary"
+                ><i class="bi bi-download"></i> 해설 다운로드</a
+                >
+            </div>
+        </div>
+    </div>
+
+    <!-- 문제 미리보기 -->
+    <div class="d-flex justify-content-center">
+        <div class="my-5">
+            <div class="card" style="width: 52rem">
+                <div class="card-body">
+                    <div class="card-title text-muted ms-3">문제 미리보기</div>
+                    <div class="badge bg-primary mt-2 ms-3"
+                         th:text="${{'MULTIPLE':'4지선다형','SHORT':'단답형','OX':'OX 퀴즈'}[result.questionType.name()]}">
+                    </div>
+                    <div class="ms-3 mt-4" th:each="q : ${result.questions}">
+                        <span th:text="|${q.questionNumber}. ${q.question}|"></span>
+                        <div th:if="${result.questionType.name() == 'MULTIPLE'}">
+                            <div class="mt-2" th:each="c : ${q.choices}">
+                                <span th:text="|${{'①','②','③','④'}[c.number - 1]} ${c.choice}|"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

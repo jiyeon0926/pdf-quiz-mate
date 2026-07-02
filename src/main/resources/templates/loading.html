@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/bootstrap.min.css}"
+            rel="stylesheet"
+    />
+    <link
+            th:href="@{/css/common.css}"
+            rel="stylesheet"
+    />
+    <title>PDFQuizMate</title>
+</head>
+<body class="vw-100 vh-100">
+<!-- navigation -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">PDFQuizMate</a>
+    </div>
+</nav>
+
+<main class="container text-center">
+    <div class="mt-4 mb-5">
+        <span class="fs-5 fw-bolder">문제 생성 중</span> <br/>
+        <span class="fw-light"
+        >AI가 문제를 생성하고 있습니다. 잠시만 기다려 주세요.</span
+        >
+    </div>
+
+    <!-- 로딩 -->
+    <div class="spinner-border text-primary mt-5" role="status">
+        <span class="visually-hidden">로딩 중...</span>
+    </div>
+</main>
+
+<script th:inline="javascript">
+    const uuid = [[${uuid}]];
+
+    // 2초마다 요청 (폴링)
+    const interval = setInterval(async () => {
+      const response = await fetch(`/api/quiz/${uuid}/status`);
+      const data = await response.json();
+
+      if (data.status === "COMPLETED") {
+        clearInterval(interval);
+        location.href = `/quiz/${uuid}`;
+      } else if (data.status === "FAILED") {
+        alert("문제 생성을 실패하였습니다.");
+        clearInterval(interval);
+        location.href = "/quiz"
+      }
+    }, 2000);
+</script>
+</body>
+</html>
