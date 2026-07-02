@@ -4,7 +4,7 @@ PDFQuizMate는 사용자가 업로드한 PDF에서 텍스트를 추출하고, AI
 
 ![Project](https://img.shields.io/badge/Project-PDFQuizMate-orange)
 ![Service](https://img.shields.io/badge/Service-AI%20기반%20문제%20생성%20서비스-blue)
-![Period](https://img.shields.io/badge/Period-2026.06.17~진행%20중-green)
+![Period](https://img.shields.io/badge/Period-2026.06.17~2026.07.02-green)
 
 # 📍 목차
 [![주요 기능](https://img.shields.io/badge/주요%20기능-FF6B6B?style=for-the-badge)](#주요-기능)
