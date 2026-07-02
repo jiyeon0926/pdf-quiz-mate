@@ -1,5 +1,5 @@
 # 🤖 PDFQuizMate
-PDFQuizMate는 AI를 활용해 다양한 유형의 문제를 생성하고 PDF로 다운로드할 수 있는 서비스입니다. </br>
+PDFQuizMate는 사용자가 업로드한 PDF에서 텍스트를 추출하고, AI를 활용해 다양한 유형의 문제를 생성하는 서비스입니다. </br>
 4지선다, 단답형, OX 문제를 생성할 수 있으며, 문제와 해설을 각각 PDF 파일로 다운로드하여 학습에 활용할 수 있습니다. </br>
 
 ![Project](https://img.shields.io/badge/Project-PDFQuizMate-orange)
@@ -14,7 +14,7 @@ PDFQuizMate는 AI를 활용해 다양한 유형의 문제를 생성하고 PDF로
 [![프로젝트 구조](https://img.shields.io/badge/프로젝트%20구조-ADB5BD?style=for-the-badge)](#프로젝트-구조)
 
 ## 주요 기능
-- Gemini 2.5 Flash를 활용한 4지선다, 단답형, OX 유형의 맞춤형 문제 생성
+- 업로드한 PDF에서 추출한 텍스트를 기반으로 Gemini 2.5 Flash를 활용해 4지선다, 단답형, OX 유형의 맞춤형 문제 생성
 - 문제 및 해설 PDF 다운로드
 <img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/641f45bd-0f07-4409-860b-3ea0d5100fed" />
 <img width="960" height="504" alt="image" src="https://github.com/user-attachments/assets/046d7bac-5987-4220-aa2a-0459aa71ac36" />
