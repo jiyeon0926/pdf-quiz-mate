@@ -1,5 +1,5 @@
 # 🤖 PDFQuizMate
-PDFQuizMate는 사용자가 업로드한 PDF에서 텍스트를 추출하고, AI를 활용해 다양한 유형의 문제를 생성하는 서비스입니다. </br>
+PDFQuizMate는 사용자가 업로드한 PDF에서 추출한 텍스트를 기반으로 AI가 다양한 유형의 문제를 생성하는 서비스입니다. </br>
 4지선다, 단답형, OX 문제를 생성할 수 있으며, 문제와 해설을 각각 PDF 파일로 다운로드하여 학습에 활용할 수 있습니다. </br>
 
 ![Project](https://img.shields.io/badge/Project-PDFQuizMate-orange)
